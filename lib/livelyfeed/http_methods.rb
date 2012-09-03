@@ -1,6 +1,6 @@
 module Livelyfeed
-	module HttpMethods
-		# Perform an HTTP DELETE request
+  module HttpMethods
+    # Perform an HTTP DELETE request
     def delete(path, params = {}, options = {}, &block)
       request(:delete, path, params, options, &block)
     end
@@ -24,5 +24,5 @@ module Livelyfeed
     def patch(path, params = {}, options = {}, &block)
       request(:patch, path, params, options, &block)
     end
-	end
+  end
 end

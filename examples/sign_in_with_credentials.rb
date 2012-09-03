@@ -3,9 +3,9 @@ $LOAD_PATH << File.expand_path("../../lib", __FILE__)
 require "livelyfeed"
 
 Livelyfeed.configure do |config|
-	config.endpoint = ENV['LIVELYFEED_ENDPOINT'] if ENV['LIVELYFEED_ENDPOINT']
-	config.consumer_key = ENV['LIVELYFEED_CONSUMER_KEY']
-	config.consumer_secret = ENV['LIVELYFEED_CONSUMER_SECRET']
+  config.endpoint = ENV['LIVELYFEED_ENDPOINT'] if ENV['LIVELYFEED_ENDPOINT']
+  config.consumer_key = ENV['LIVELYFEED_CONSUMER_KEY']
+  config.consumer_secret = ENV['LIVELYFEED_CONSUMER_SECRET']
 end
 
 username = ARGV[0] || ENV['LIVELYFEED_USERNAME']

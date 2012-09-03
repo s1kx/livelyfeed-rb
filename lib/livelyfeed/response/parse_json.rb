@@ -1,3 +1,4 @@
+require 'multi_json'
 
 module Livelyfeed
   module Response

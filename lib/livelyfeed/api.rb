@@ -1,5 +1,5 @@
 module Livelyfeed
-	module API
-		
-	end
+  module API
+    
+  end
 end

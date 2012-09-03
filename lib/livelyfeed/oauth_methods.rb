@@ -1,7 +1,7 @@
 require 'livelyfeed/oauth2/access_token'
 
 module Livelyfeed
-	module OAuthMethods
+  module OAuthMethods
     # The OAuth client_id and client_secret
     #
     # @return [Hash]
@@ -19,7 +19,7 @@ module Livelyfeed
       response = request(method, path, params, options)
     end
 
-		# The token endpoint URL of the OAuth2 provider
+    # The token endpoint URL of the OAuth2 provider
     #
     # @param [Hash] params additional query parameters
     def token_url(params = nil)
@@ -64,5 +64,5 @@ module Livelyfeed
 
       @access_token = get_token(params, options)
     end
-	end
+  end
 end
