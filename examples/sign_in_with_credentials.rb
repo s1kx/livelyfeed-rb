@@ -14,4 +14,4 @@ password = ARGV[1] || ENV['LIVELYFEED_PASSWORD']
 client = Livelyfeed::Client.new
 client.sign_in_with_credentials(username, password)
 
-p client.get('/v1/users/1')
+p client.get('/v1/users/1234')
