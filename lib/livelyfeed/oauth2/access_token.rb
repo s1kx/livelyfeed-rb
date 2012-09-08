@@ -80,16 +80,13 @@ module Livelyfeed
         expires? && (expires_at < Time.now.to_i)
       end
 
-=begin
       # Refreshes the current Access Token
       #
       # @return [AccessToken] a new AccessToken
       # @note options should be carried over to the new AccessToken
-      def refresh!(params={})
+      def refresh!(params = {})
         raise "A refresh_token is not available" unless refresh_token
-        params.merge!(
-          client_id:      @client.id,
-          client_secret:  @client.secret,
+        params.merge!(@client.oauth_client_params).merge!(
           grant_type:     'refresh_token',
           refresh_token:  refresh_token
         )
@@ -97,7 +94,6 @@ module Livelyfeed
         new_token.options = options
         new_token
       end
-=end
 
       # Make a request with the Access Token
       #

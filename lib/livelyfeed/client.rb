@@ -9,10 +9,7 @@ require 'livelyfeed/error/client_error'
 require 'livelyfeed/error/decode_error'
 
 module Livelyfeed
-  # Wrapper for the Livelyfeed REST API
-  #
-  # @note All methods have been separated into modules and follow the same grouping used in {http://dev.Livelyfeed.com/doc the Livelyfeed API Documentation}.
-  # @see http://dev.Livelyfeed.com/pages/every_developer
+  # Wrapper for the LivelyFeed REST API
   class Client
     include Livelyfeed::API
     include Livelyfeed::Configurable
@@ -51,7 +48,10 @@ module Livelyfeed
       uri += path
       request_headers = {}
       if credentials?
-        request_headers.merge(access_token.headers) if access_token
+        if access_token
+          access_token.refresh! if access_token.expired?
+          request_headers.merge(access_token.headers)
+        end
       end
       connection.url_prefix = options[:endpoint] || @endpoint
       response = connection.run_request(method.to_sym, path, nil, request_headers) do |request|
