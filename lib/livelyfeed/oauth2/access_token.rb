@@ -59,6 +59,17 @@ module Livelyfeed
         @params = options
       end
 
+      # Returns Hash-formatted version of the Access Token
+      # 
+      # @return [Hash]
+      def to_hash
+        {
+          access_token:   token,
+          refresh_token:  refresh_token,
+          expires_at:     expires_at 
+        }
+      end
+
       # Indexer to additional params present in token response
       #
       # @param [String] key entry key to Hash
