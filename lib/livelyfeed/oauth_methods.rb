@@ -42,6 +42,7 @@ module Livelyfeed
         'Content-Type' => 'application/x-www-form-urlencoded'
       }
       opts[:headers].merge!(headers) if headers
+      opts[:ignore_access_token] = true
 
       response = oauth_request(:post, token_url, params, opts)
 
