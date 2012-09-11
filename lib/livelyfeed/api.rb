@@ -49,5 +49,21 @@ module Livelyfeed
       post("/v1/groups/destroy", id: id)[:body]
     end
 
+    # Follows a user
+    #
+    # @param user_id [Integer] A LivelyFeed User ID
+    # @return [Hash]
+    def follow(user_id)
+      post("/v1/users/follow", id: user_id)[:body]
+    end
+
+    # Unfollows a user
+    #
+    # @param user_id [Integer] A LivelyFeed User ID
+    # @return [Hash]
+    def follow(user_id)
+      post("/v1/users/unfollow", id: user_id)[:body]
+    end
+
   end
 end
