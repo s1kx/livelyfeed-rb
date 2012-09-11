@@ -13,7 +13,7 @@ module Livelyfeed
     #
     # @return [Array<Hash>]
     def groups
-      get("/v1/groups")[:body]
+      get("/v1/groups/list")[:body]
     end
 
     # Returns extended information for the group
