@@ -61,7 +61,7 @@ module Livelyfeed
     #
     # @param user_id [Integer] A LivelyFeed User ID
     # @return [Hash]
-    def follow(user_id)
+    def unfollow(user_id)
       post("/v1/users/unfollow", id: user_id)[:body]
     end
 
