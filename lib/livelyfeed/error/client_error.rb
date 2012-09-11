@@ -20,13 +20,13 @@ module Livelyfeed
           ''
         elsif body[:error]
           body[:error]
-        elsif body[:errors]
-          first = Array(body[:errors]).first
-          if first.kind_of?(Hash)
-            first[:message].chomp
-          else
-            first.chomp
-          end
+        # elsif body[:errors]
+        #   first = Array(body[:errors]).first
+        #   if first.kind_of?(Hash)
+        #     first[:message].chomp
+        #   else
+        #     first.chomp
+        #   end
         end
       end
 

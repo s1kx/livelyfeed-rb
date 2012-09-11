@@ -46,7 +46,9 @@ module Livelyfeed
       uri = options[:endpoint] || @endpoint
       uri = URI(uri) unless uri.respond_to?(:host)
       uri += path
-      request_headers = {}
+      request_headers = {
+        'Content-Type' => 'application/json'
+      }
       if credentials?
         if access_token
           access_token.refresh! if access_token.expired?
@@ -54,12 +56,11 @@ module Livelyfeed
         end
       end
       connection.url_prefix = options[:endpoint] || @endpoint
-      p [method.to_sym, path, request_headers]
       response = connection.run_request(method.to_sym, path, nil, request_headers) do |request|
         unless params.empty?
           case request.method
           when :post, :put
-            request.body = params
+            request.body = JSON.dump(params)
           else
             request.params.update(params)
           end
