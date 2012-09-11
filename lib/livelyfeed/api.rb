@@ -8,6 +8,14 @@ module Livelyfeed
     def user(id)
       get("/v1/users/#{id}")
     end
+
+    # Returns extended information for the user
+    #
+    # @param username [String] A LivelyFeed username
+    # @return [Hash]
+    def user_by_username(username)
+      get("/v1/users/find", username: username)
+    end
     
     # Returns the groups the user participates in
     #
