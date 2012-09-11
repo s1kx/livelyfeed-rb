@@ -21,7 +21,7 @@ module Livelyfeed
     # @param id [Integer] A LivelyFeed Group ID
     # @return [Hash]
     def group(id)
-      get("/v1/groups", id: id)[:body]
+      get("/v1/groups/show", id: id)[:body]
     end
 
     # Creates a group with the given attributes
