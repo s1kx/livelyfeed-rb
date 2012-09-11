@@ -19,6 +19,8 @@ module Livelyfeed
     attr_accessor :access_token
     attr_reader :rate_limit
 
+    attr_accessor :on_token_refresh
+
     # Initializes a new Client object
     #
     # @param options [Hash]
@@ -51,7 +53,10 @@ module Livelyfeed
       }
       if credentials?
         if access_token && !options[:ignore_access_token]
-          @access_token = access_token.refresh! if access_token.expired?
+          if access_token.expired?
+            @access_token = access_token.refresh!
+            on_token_refresh and on_token_refresh.call(@access_token)
+          end
           request_headers.merge!(access_token.headers)
         end
       end
