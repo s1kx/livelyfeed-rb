@@ -51,7 +51,7 @@ module Livelyfeed
       }
       if credentials?
         if access_token && !options[:ignore_access_token]
-          access_token.refresh! if access_token.expired?
+          @access_token = access_token.refresh! if access_token.expired?
           request_headers.merge!(access_token.headers)
         end
       end
