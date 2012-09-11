@@ -6,14 +6,14 @@ module Livelyfeed
     # @param id [Integer] A LivelyFeed User ID
     # @return [Hash]
     def user(id)
-      get("/v1/users/show", id: id)[:body]
+      get("/v1/users/#{id}")[:body]
     end
     
     # Returns the groups the user participates in
     #
     # @return [Array<Hash>]
     def groups
-      get("/v1/groups/list")[:body]
+      get("/v1/groups")[:body]
     end
 
     # Returns extended information for the group
@@ -21,7 +21,7 @@ module Livelyfeed
     # @param id [Integer] A LivelyFeed Group ID
     # @return [Hash]
     def group(id)
-      get("/v1/groups/show", id: id)[:body]
+      get("/v1/groups/#{id}")[:body]
     end
 
     # Creates a group with the given attributes
@@ -29,7 +29,7 @@ module Livelyfeed
     # @param attributes [Hash] The groups attributes
     # @return [Hash]
     def create_group(attributes)
-      post("/v1/groups/create", attributes)[:body]
+      post("/v1/groups", attributes)[:body]
     end
 
     # Updates the with the given attributes
@@ -38,7 +38,7 @@ module Livelyfeed
     # @param attributes [Hash] The groups attributes
     # @return [Hash]
     def update_group(id, attributes)
-      post("/v1/groups/update", attributes.merge(id: id))[:body]
+      put("/v1/groups/#{id}", attributes)[:body]
     end
 
     # Destroys a group
@@ -46,7 +46,7 @@ module Livelyfeed
     # @param id [Integer] The groups ID
     # @return [Hash]
     def destroy_group(id)
-      post("/v1/groups/destroy", id: id)[:body]
+      delete("/v1/groups/#{id}")[:body]
     end
 
     # Follows a user
@@ -54,7 +54,7 @@ module Livelyfeed
     # @param user_id [Integer] A LivelyFeed User ID
     # @return [Hash]
     def follow(user_id)
-      post("/v1/users/follow", id: user_id)[:body]
+      post("/v1/users/#{id}/follow")[:body]
     end
 
     # Unfollows a user
@@ -62,7 +62,7 @@ module Livelyfeed
     # @param user_id [Integer] A LivelyFeed User ID
     # @return [Hash]
     def unfollow(user_id)
-      post("/v1/users/unfollow", id: user_id)[:body]
+      post("/v1/users/#{id}/unfollow")[:body]
     end
 
   end
