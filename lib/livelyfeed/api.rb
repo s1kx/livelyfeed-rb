@@ -30,7 +30,7 @@ module Livelyfeed
     # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
     def user_followed_users(user_id)
-      get("/v1/users/#{user_id}/followers")
+      get("/v1/users/#{user_id}/followed_users")
     end
 
     # Follows a user
