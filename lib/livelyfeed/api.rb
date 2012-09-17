@@ -123,7 +123,7 @@ module Livelyfeed
       delete("/v1/groups/#{group_id}/members/#{user_id}")
     end
 
-    # Returns the groups most recent 50 chat messages
+    # Returns the groups 50 most recent chat messages
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
     # @return [Hash] Response Object
@@ -131,7 +131,7 @@ module Livelyfeed
       get("/v1/groups/#{group_id}/messages")
     end
 
-    # Returns the groups most recent 50 chat messages
+    # Send a message to the group chat
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
     # @param [Hash] attributes  The messages attributes
@@ -146,6 +146,22 @@ module Livelyfeed
     # @return [Hash] Response Object
     def search_people(query)
       get("/v1/search/people", query: query)
+    end
+
+    # Requests a password reset for the user with the given email address
+    #
+    # @param [String] email  User's email address
+    # @return [Hash] Response Object
+    def request_password_reset(email)
+      post("/v1/password_resets", email: email)
+    end
+
+    # Receives the status for a given password reset
+    #
+    # @param [String] token  Password reset token (from the email)
+    # @return [Hash] Response Object
+    def password_reset_status(token)
+      get("/v1/password_resets/#{token}")
     end
 
   end
