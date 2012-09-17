@@ -131,6 +131,15 @@ module Livelyfeed
       get("/v1/groups/#{group_id}/messages")
     end
 
+    # Receive a specific message from a group
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] message_id  A LivelyFeed Message ID
+    # @return [Hash] Response Object
+    def group_chat_message(group_id, message_id)
+      get("/v1/groups/#{group_id}/messages/#{message_id}")
+    end
+
     # Send a message to the group chat
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
@@ -162,6 +171,15 @@ module Livelyfeed
     # @return [Hash] Response Object
     def password_reset_status(token)
       get("/v1/password_resets/#{token}")
+    end
+
+    # Changes the users password with a valid password reset token
+    #
+    # @param [String] token  Password reset token (from the email)
+    # @param [String] password  New password
+    # @return [Hash] Response Object
+    def use_password_reset(token, password)
+      put("/v1/password_resets/#{token}", password: password)
     end
 
   end
