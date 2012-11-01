@@ -128,7 +128,7 @@ module Livelyfeed
     # @param [Integer] group_id  A LivelyFeed Group ID
     # @return [Hash] Response Object
     def group_chat_messages(group_id)
-      get("/v1/groups/#{group_id}/messages")
+      get("/v1/groups/#{group_id}/chat/messages")
     end
 
     # Returns the groups most recent 50 chat messages
@@ -137,7 +137,7 @@ module Livelyfeed
     # @param [Hash] attributes  The messages attributes
     # @return [Hash] Response Object
     def add_group_chat_message(group_id, attributes)
-      post("/v1/groups/#{group_id}/messages", attributes)
+      post("/v1/groups/#{group_id}/chat/messages", attributes)
     end
 
     # Searches for people with the given query
