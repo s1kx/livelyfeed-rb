@@ -17,6 +17,31 @@ module Livelyfeed
       get("/v1/users/find", username: username)
     end
 
+    # Creates a user with the given attributes
+    #
+    # @param [Hash] attributes  The users attributes
+    # @return [Hash] Response Object
+    def create_user(attributes)
+      post("/v1/users", attributes)
+    end
+
+    # Updates a user with the given attributes
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @param [Hash] attributes  The users attributes
+    # @return [Hash] Response Object
+    def update_user(user_id, attributes)
+      put("/v1/users/#{user_id}", attributes)
+    end
+
+    # Destroys a user
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @return [Hash] Response Object
+    def destroy_user(user_id)
+      delete("/v1/users/#{user_id}")
+    end
+
     # Returns followers for the given user id
     #
     # @param [Integer] user_id  A LivelyFeed User ID
@@ -72,7 +97,7 @@ module Livelyfeed
       post("/v1/groups", attributes)
     end
 
-    # Updates the with the given attributes
+    # Updates the group with the given attributes
     #
     # @param [Integer] group_id  The groups ID
     # @param [Hash] attributes  The groups attributes
