@@ -17,6 +17,13 @@ module Livelyfeed
       get("/v1/users/find", username: username)
     end
 
+    # Returns extended information for the currently signed in user
+    #
+    # @return [Hash] Response Object
+    def current_user
+      get("/v1/users/me")
+    end
+
     # Creates a user with the given attributes
     #
     # @param [Hash] attributes  The users attributes
