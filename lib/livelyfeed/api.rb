@@ -173,5 +173,30 @@ module Livelyfeed
       get("/v1/search/people", query: query)
     end
 
+    # Show the status of a password reset
+    #
+    # @param [String] token  A password reset token
+    # @return [Hash] Response Object
+    def password_reset(token)
+      get("/v1/password_resets/#{token}")
+    end
+
+    # Request a password reset for a given email
+    #
+    # @param [String] email  A LivelyFeed User's Email Address
+    # @return [Hash] Response Object
+    def request_password_reset(email)
+      post("/v1/password_resets", email: email)
+    end
+
+    # Use a password reset with a given token and new password
+    #
+    # @param [String] token  A password reset token (received in email after request_password_reset)
+    # @param [String] new_password  The users new password
+    # @return [Hash] Response Object
+    def use_password_reset(token, new_password)
+      put("/v1/password_resets/#{token}", password: new_password)
+    end
+
   end
 end
