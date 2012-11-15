@@ -51,6 +51,17 @@ module Livelyfeed
       Livelyfeed::OAuth2::AccessToken.from_hash(self, response[:body])
     end
 
+    # Retrieve an access token for the current application
+    #
+    # @param [Hash] params additional params
+    def sign_in_as_client(params = {}, options = {})
+      params = {
+        'grant_type' => 'client_credentials'
+      }.merge(oauth_client_params).merge(params)
+
+      @access_token = get_token(params, options)
+    end
+
     # Retrieve an access token given the specified End User username and password.
     #
     # @param [String] username the End User username
