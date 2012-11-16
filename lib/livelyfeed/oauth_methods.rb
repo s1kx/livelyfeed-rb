@@ -115,5 +115,21 @@ module Livelyfeed
 
       @access_token = get_token_from_assertion(url, params)
     end
+
+    # Retrieve an access token given the specified Twitter OAuth token & secret.
+    #
+    # @param [String] oauth_token
+    # @param [String] oauth_token_secret
+    # @param [Hash] params additional params
+    def sign_in_with_twitter(oauth_token, oauth_token_secret, params = {}, options = {})
+      params = {
+        'oauth_token' => oauth_token,
+        'oauth_token_secret' => oauth_token_secret
+      }.merge(oauth_client_params).merge(params)
+
+      url = connection.build_url("/auth/twitter").to_s
+
+      @access_token = get_token_from_assertion(url, params)
+    end
   end
 end
