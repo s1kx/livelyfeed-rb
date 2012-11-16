@@ -65,6 +65,15 @@ module Livelyfeed
       get("/v1/users/#{user_id}/followed_users")
     end
 
+    # Checks whether a user is following another
+    #
+    # @param [Integer] source User ID that follows
+    # @param [Integer] target User ID that gets followed
+    # @return [Hash] Response Object
+    def following?(source, target)
+      get("/v1/users/#{source}/is_following/#{target}")
+    end
+
     # Follows a user
     #
     # @param [Integer] user_id  A LivelyFeed User ID
