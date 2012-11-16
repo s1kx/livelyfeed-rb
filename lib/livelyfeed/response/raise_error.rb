@@ -10,7 +10,6 @@ require 'livelyfeed/error/not_found'
 require 'livelyfeed/error/service_unavailable'
 require 'livelyfeed/error/unauthorized'
 require 'livelyfeed/error/rate_limited'
-require 'livelyfeed/error/unprocessable_entity'
 
 module Livelyfeed
   module Response
