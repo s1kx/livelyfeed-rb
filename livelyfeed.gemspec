@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.authors = ["Patrick Glandien"]
   gem.description = %q{A Ruby wrapper for the LivelyFeed API.}
   gem.email = ['patrick@livelyfeed.com']
-  gem.files = %w(CHANGELOG.md LICENSE.md README.md Rakefile livelyfeed.gemspec)
+  gem.files = %w(README.md Rakefile livelyfeed.gemspec)
   gem.files += Dir.glob("lib/**/*.rb")
   gem.files += Dir.glob("spec/**/*")
   gem.homepage = 'https://github.com/livelyfeed/livelyfeed'
@@ -29,4 +29,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'timecop'
   gem.add_development_dependency 'webmock'
   gem.add_development_dependency 'yard'
+  gem.add_development_dependency 'rack'
 end

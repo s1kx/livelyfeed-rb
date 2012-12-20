@@ -65,7 +65,7 @@ module Livelyfeed
         unless params.empty?
           case request.method
           when :post, :put
-            request.body = JSON.dump(params)
+            request.body = MultiJson.dump(params)
           else
             request.params.update(params)
           end
