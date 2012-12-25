@@ -48,9 +48,14 @@ module Livelyfeed
       uri = options[:endpoint] || @endpoint
       uri = URI(uri) unless uri.respond_to?(:host)
       uri += path
-      request_headers = {
-        'Content-Type' => 'application/json'
-      }
+      request_headers = 
+        if options[:plain_params]
+          {}
+        else
+          {
+            'Content-Type' => 'application/json'
+          }
+        end
       if credentials?
         if access_token && !options[:ignore_access_token]
           if access_token.expired?
@@ -65,7 +70,11 @@ module Livelyfeed
         unless params.empty?
           case request.method
           when :post, :put
-            request.body = MultiJson.dump(params)
+            if options[:plain_params]
+              request.body = params
+            else
+              request.body = MultiJson.dump(params)
+            end
           else
             request.params.update(params)
           end

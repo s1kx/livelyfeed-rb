@@ -2,6 +2,7 @@ require 'faraday'
 require 'livelyfeed/version'
 require 'livelyfeed/configurable'
 require 'livelyfeed/error/client_error'
+require 'livelyfeed/request/multipart_with_file'
 require 'livelyfeed/response/parse_json'
 require 'livelyfeed/response/raise_error'
 
@@ -24,7 +25,7 @@ module Livelyfeed
     MIDDLEWARE = Faraday::Builder.new(
       &Proc.new do |builder|
         # Convert file uploads to Faraday::UploadIO objects
-        #builder.use Livelyfeed::Request::MultipartWithFile
+        builder.use Livelyfeed::Request::MultipartWithFile
         # Checks for files in the payload
         builder.use Faraday::Request::Multipart
         # Convert request params to "www-form-urlencoded"

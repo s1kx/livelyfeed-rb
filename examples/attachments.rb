@@ -15,4 +15,4 @@ client = Livelyfeed::Client.new
 client.sign_in_as_client
 client.sign_in_with_credentials(username, password)
 
-p client.get('/v1/users/235')
+p client.create_attachment(File.open(ENV['LIVELYFEED_UPLOAD']))

@@ -1,6 +1,6 @@
 module Livelyfeed
   module API
-
+    
     # Returns extended information for the user
     #
     # @param [Integer] user_id  A LivelyFeed User ID
@@ -221,6 +221,15 @@ module Livelyfeed
     # @return [Hash] Response Object
     def use_password_reset(token, new_password)
       put("/v1/password_resets/#{token}", password: new_password)
+    end
+
+    # Creates an attachment
+    #
+    # @param [String] file  An image or video to be uploaded
+    # @return [Hash] Response Object
+    def create_attachment(file)
+      params = { file: file }
+      post("/v1/attachments", params, plain_params: true)
     end
 
   end
