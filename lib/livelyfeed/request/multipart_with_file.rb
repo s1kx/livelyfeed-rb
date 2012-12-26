@@ -9,6 +9,8 @@ module Livelyfeed
         env[:body].each do |key, value|
           if value.respond_to?(:to_io)
             env[:body][key] = Faraday::UploadIO.new(value, mime_type(value.path), value.path)
+          elsif value.respond_to?(:tempfile)
+            env[:body][key] = Faraday::UploadIO.new(value.tempfile.path, value.content_type, value.original_filename)
           end
         end if env[:body].is_a?(::Hash)
         @app.call(env)
