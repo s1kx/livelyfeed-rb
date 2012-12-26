@@ -229,7 +229,9 @@ module Livelyfeed
     # @return [Hash] Response Object
     def create_attachment(file)
       params = { file: file }
-      post("/v1/attachments", params, plain_params: true)
+      post("/v1/attachments", params, plain_params: true) do |request|
+        request.options[:timeout] = 60
+      end
     end
 
   end
