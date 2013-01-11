@@ -35,7 +35,7 @@ module Livelyfeed
         # Parse JSON response bodies using MultiJson
         builder.use Livelyfeed::Response::ParseJson
         # Handle 5xx server responses
-        #builder.use Livelyfeed::Response::RaiseError, Livelyfeed::Error::ServerError
+        builder.use Livelyfeed::Response::RaiseError, Livelyfeed::Error::ServerError
         # Set Faraday's HTTP adapter
         builder.adapter Faraday.default_adapter
       end
