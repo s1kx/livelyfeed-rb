@@ -1,4 +1,4 @@
-require 'livelyfeed/error/internal_server_error'
+require 'livelyfeed/error/server_error'
 
 module Livelyfeed
   class Error
