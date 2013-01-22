@@ -105,6 +105,14 @@ module Livelyfeed
       get("/v1/groups/#{group_id}")
     end
 
+    # Returns extended information for the group
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @return [Hash] Response Object
+    def group_by_slug(group_slug)
+      get("/v1/groups/find", slug: group_slug)
+    end
+
     # Creates a group with the given attributes
     #
     # @param [Hash] attributes  The groups attributes
