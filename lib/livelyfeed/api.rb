@@ -198,6 +198,40 @@ module Livelyfeed
       post("/v1/groups/#{group_id}/chat/messages", attributes)
     end
 
+    # Returns the groups moments
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @return [Hash] Response Object
+    def group_moments(group_id)
+      get("/v1/groups/#{group_id}/feed/moments")
+    end
+
+    # Returns the users moments
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @return [Hash] Response Object
+    def user_moments(group_id)
+      get("/v1/users/#{user_id}/moments")
+    end
+
+    # Creates a moment
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] message_id  A LivelyFeed Message ID
+    # @return [Hash] Response Object
+    def create_moment(group_id, message_id)
+      post("/v1/groups/#{group_id}/feed/moments", message_id: message_id)
+    end
+
+    # Destroys a moment
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def destroy_moment(group_id, moment_id)
+      delete("/v1/groups/#{group_id}/feed/moments/#{moment_id}")
+    end
+
     # Searches for people with the given query
     #
     # @param [String] query  Search query
