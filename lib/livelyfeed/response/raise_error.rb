@@ -1,6 +1,7 @@
 require 'faraday'
 require 'livelyfeed/error/bad_gateway'
 require 'livelyfeed/error/bad_request'
+require 'livelyfeed/error/unprocessable_entity'
 require 'livelyfeed/error/enhance_your_calm'
 require 'livelyfeed/error/forbidden'
 require 'livelyfeed/error/internal_server_error'
