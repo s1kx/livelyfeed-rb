@@ -186,7 +186,7 @@ module Livelyfeed
     # @param [Integer] message_id  A LivelyFeed Message ID
     # @return [Hash] Response Object
     def group_chat_message(group_id, message_id)
-      get("/v1/groups/#{group_id}/messages/#{message_id}")
+      get("/v1/groups/#{group_id}/chat/messages/#{message_id}")
     end
 
     # Send a message to the group chat
