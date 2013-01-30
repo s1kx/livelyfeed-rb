@@ -198,6 +198,24 @@ module Livelyfeed
       post("/v1/groups/#{group_id}/chat/messages", attributes)
     end
 
+    # Like a message in the group chat
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] message_id  A LivelyFeed Message ID
+    # @return [Hash] Response Object
+    def like_group_chat_message(group_id, message_id)
+      post("/v1/groups/#{group_id}/chat/messages/#{message_id}/likes")
+    end
+
+    # Unlike a message in the group chat
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] message_id  A LivelyFeed Message ID
+    # @return [Hash] Response Object
+    def unlike_group_chat_message(group_id, message_id)
+      delete("/v1/groups/#{group_id}/chat/messages/#{message_id}/likes")
+    end
+
     # Returns the groups moments
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
