@@ -90,11 +90,12 @@ module Livelyfeed
       post("/v1/users/#{user_id}/unfollow")
     end
     
-    # Returns the groups the user participates in
+    # Returns the groups a user participates in
     #
+    # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
-    def groups
-      get("/v1/groups")
+    def user_groups(user_id)
+      get("/v1/users/#{user_id}/groups")
     end
 
     # Returns extended information for the group
