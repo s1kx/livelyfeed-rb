@@ -173,6 +173,24 @@ module Livelyfeed
       delete("/v1/groups/#{group_id}/members/#{user_id}")
     end
 
+    # Invite a LivelyFeed user to a group
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @return [Hash] Response Object
+    def invite_group_livelyfeed_user(group_id, user_id)
+      post("/v1/groups/#{group_id}/invitations", type: 'user', user_id: user_id)
+    end
+
+    # Invite a Facebook user to a group
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [String] facebook_id  A Facebook User ID
+    # @return [Hash] Response Object
+    def invite_group_facebook_user(group_id, facebook_id)
+      post("/v1/groups/#{group_id}/invitations", type: 'facebook', facebook_id: facebook_id)
+    end
+
     # Returns the groups 50 most recent chat messages
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
