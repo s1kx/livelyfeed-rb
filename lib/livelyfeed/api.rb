@@ -173,6 +173,15 @@ module Livelyfeed
       delete("/v1/groups/#{group_id}/members/#{user_id}")
     end
 
+    # Returns the groups members
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [String] filter  Type of invitations to show (nil, "unanswered", "answered", "accepted", "denied")
+    # @return [Hash] Response Object
+    def group_invitations(group_id, filter = "unanswered")
+      get("/v1/groups/#{group_id}/invitations", filter: nil)
+    end
+
     # Invite a LivelyFeed user to a group
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
