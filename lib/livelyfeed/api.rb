@@ -178,8 +178,8 @@ module Livelyfeed
     # @param [Integer] user_id  A LivelyFeed User ID
     # @param [String] filter  Type of invitations to show (nil, "unanswered", "answered", "accepted", "denied")
     # @return [Hash] Response Object
-    def user_invitations(user_id, filter = "unanswered")
-      get("/v1/users/#{user_id}/invitations", filter: filter)
+    def user_group_invitations(user_id, filter = "unanswered")
+      get("/v1/users/#{user_id}/group_invitations", filter: filter)
     end
 
     # Returns the groups invitations
