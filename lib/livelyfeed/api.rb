@@ -182,6 +182,33 @@ module Livelyfeed
       get("/v1/users/#{user_id}/group_invitations", filter: filter)
     end
 
+    # Returns the specified group invitation for that user
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @param [Integer] invitation_id  A LivelyFeed Group Invitation ID
+    # @return [Hash] Response Object
+    def user_group_invitation(user_id, invitation_id)
+      get("/v1/users/#{user_id}/group_invitations/#{invitation_id}")
+    end
+
+    # Accepts the specified group invitation for that user
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @param [Integer] invitation_id  A LivelyFeed Group Invitation ID
+    # @return [Hash] Response Object
+    def accept_user_group_invitation(user_id, invitation_id)
+      post("/v1/users/#{user_id}/group_invitations/#{invitation_id}/accept")
+    end
+
+    # Denies the specified group invitation for that user
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @param [Integer] invitation_id  A LivelyFeed Group Invitation ID
+    # @return [Hash] Response Object
+    def deny_user_group_invitation(user_id, invitation_id)
+      post("/v1/users/#{user_id}/group_invitations/#{invitation_id}/deny")
+    end
+
     # Returns the groups invitations
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
