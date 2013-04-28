@@ -314,6 +314,15 @@ module Livelyfeed
       delete("/v1/groups/#{group_id}/feed/moments/#{moment_id}")
     end
 
+    # Creates a moment comment
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @param [String] text  The comments content
+    # @return [Hash] Response Object
+    def create_moment_comment(moment_id, text)
+      post("/v1/moments/#{moment_id}/comments", text: text)
+    end
+
     # Searches for people with the given query
     #
     # @param [String] query  Search query
