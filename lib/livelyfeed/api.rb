@@ -314,6 +314,14 @@ module Livelyfeed
       delete("/v1/groups/#{group_id}/feed/moments/#{moment_id}")
     end
 
+    # Gets a moments comments
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def moment_comments(moment_id)
+      get("/v1/moments/#{moment_id}/comments")
+    end
+
     # Creates a moment comment
     #
     # @param [Integer] moment_id  A LivelyFeed Moment ID
