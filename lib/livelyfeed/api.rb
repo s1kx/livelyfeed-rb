@@ -292,7 +292,7 @@ module Livelyfeed
     #
     # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
-    def user_moments(group_id)
+    def user_moments(user_id)
       get("/v1/users/#{user_id}/moments")
     end
 
