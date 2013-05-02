@@ -323,6 +323,30 @@ module Livelyfeed
       delete("/v1/groups/#{group_id}/feed/moments/#{moment_id}")
     end
 
+    # Get a moments likes
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def moment_likes(moment_id)
+      get("/v1/moments/#{moment_id}/likes")
+    end
+
+    # Like a moment
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def like_moment(moment_id)
+      post("/v1/moments/#{moment_id}/likes")
+    end
+
+    # Unlike a moment
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def unlike_moment(moment_id)
+      delete("/v1/moments/#{moment_id}/likes")
+    end
+
     # Gets a moments comments
     #
     # @param [Integer] moment_id  A LivelyFeed Moment ID
