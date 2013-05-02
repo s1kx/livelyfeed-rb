@@ -288,6 +288,15 @@ module Livelyfeed
       get("/v1/groups/#{group_id}/feed/moments")
     end
 
+    # Returns the specified moment in the given group
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def group_moment(group_id, moment_id)
+      get("/v1/groups/#{group_id}/feed/moments/#{moment_id}")
+    end
+
     # Returns the users moments
     #
     # @param [Integer] user_id  A LivelyFeed User ID
