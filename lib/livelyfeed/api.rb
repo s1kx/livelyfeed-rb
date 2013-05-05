@@ -364,6 +364,14 @@ module Livelyfeed
       post("/v1/moments/#{moment_id}/comments", text: text)
     end
 
+    # Returns the users live feed items
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @return [Hash] Response Object
+    def user_live_feed(user_id)
+      get("/v1/users/#{user_id}/feed")
+    end
+
     # Searches for people with the given query
     #
     # @param [String] query  Search query
