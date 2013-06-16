@@ -368,8 +368,8 @@ module Livelyfeed
     #
     # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
-    def user_live_feed(user_id)
-      get("/v1/users/#{user_id}/live")
+    def user_live_feed(user_id, params = {})
+      get("/v1/users/#{user_id}/live", params)
     end
 
     # Searches for people with the given query
