@@ -240,7 +240,7 @@ module Livelyfeed
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
     # @return [Hash] Response Object
-    def group_chat_messages(group_id, params)
+    def group_chat_messages(group_id, params = {})
       get("/v1/groups/#{group_id}/chat/messages", params)
     end
 
