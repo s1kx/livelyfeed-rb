@@ -173,6 +173,69 @@ module Livelyfeed
       delete("/v1/groups/#{group_id}/members/#{user_id}")
     end
 
+    # Returns the users group invitations
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @param [String] filter  Type of invitations to show (nil, "unanswered", "answered", "accepted", "denied")
+    # @return [Hash] Response Object
+    def user_group_invitations(user_id, filter = "unanswered")
+      get("/v1/users/#{user_id}/group_invitations", filter: filter)
+    end
+
+    # Returns the specified group invitation for that user
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @param [Integer] invitation_id  A LivelyFeed Group Invitation ID
+    # @return [Hash] Response Object
+    def user_group_invitation(user_id, invitation_id)
+      get("/v1/users/#{user_id}/group_invitations/#{invitation_id}")
+    end
+
+    # Accepts the specified group invitation for that user
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @param [Integer] invitation_id  A LivelyFeed Group Invitation ID
+    # @return [Hash] Response Object
+    def accept_user_group_invitation(user_id, invitation_id)
+      post("/v1/users/#{user_id}/group_invitations/#{invitation_id}/accept")
+    end
+
+    # Denies the specified group invitation for that user
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @param [Integer] invitation_id  A LivelyFeed Group Invitation ID
+    # @return [Hash] Response Object
+    def deny_user_group_invitation(user_id, invitation_id)
+      post("/v1/users/#{user_id}/group_invitations/#{invitation_id}/deny")
+    end
+
+    # Returns the groups invitations
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [String] filter  Type of invitations to show (nil, "unanswered", "answered", "accepted", "denied")
+    # @return [Hash] Response Object
+    def group_invitations(group_id, filter = "unanswered")
+      get("/v1/groups/#{group_id}/invitations", filter: filter)
+    end
+
+    # Invite a LivelyFeed user to a group
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @return [Hash] Response Object
+    def invite_group_livelyfeed_user(group_id, user_id)
+      post("/v1/groups/#{group_id}/invitations", type: 'user', user_id: user_id)
+    end
+
+    # Invite a Facebook user to a group
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [String] facebook_id  A Facebook User ID
+    # @return [Hash] Response Object
+    def invite_group_facebook_user(group_id, facebook_id)
+      post("/v1/groups/#{group_id}/invitations", type: 'facebook', facebook_id: facebook_id)
+    end
+
     # Returns the groups 50 most recent chat messages
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
@@ -225,11 +288,20 @@ module Livelyfeed
       get("/v1/groups/#{group_id}/feed/moments", params)
     end
 
+    # Returns the specified moment in the given group
+    #
+    # @param [Integer] group_id  A LivelyFeed Group ID
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def group_moment(group_id, moment_id)
+      get("/v1/groups/#{group_id}/feed/moments/#{moment_id}")
+    end
+
     # Returns the users moments
     #
     # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
-    def user_moments(group_id, params = {})
+    def user_moments(user_id, params = {})
       get("/v1/users/#{user_id}/moments", params)
     end
 
@@ -249,6 +321,55 @@ module Livelyfeed
     # @return [Hash] Response Object
     def destroy_moment(group_id, moment_id)
       delete("/v1/groups/#{group_id}/feed/moments/#{moment_id}")
+    end
+
+    # Get a moments likes
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def moment_likes(moment_id)
+      get("/v1/moments/#{moment_id}/likes")
+    end
+
+    # Like a moment
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def like_moment(moment_id)
+      post("/v1/moments/#{moment_id}/likes")
+    end
+
+    # Unlike a moment
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def unlike_moment(moment_id)
+      delete("/v1/moments/#{moment_id}/likes")
+    end
+
+    # Gets a moments comments
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @return [Hash] Response Object
+    def moment_comments(moment_id)
+      get("/v1/moments/#{moment_id}/comments")
+    end
+
+    # Creates a moment comment
+    #
+    # @param [Integer] moment_id  A LivelyFeed Moment ID
+    # @param [String] text  The comments content
+    # @return [Hash] Response Object
+    def create_moment_comment(moment_id, text)
+      post("/v1/moments/#{moment_id}/comments", text: text)
+    end
+
+    # Returns the users live feed items
+    #
+    # @param [Integer] user_id  A LivelyFeed User ID
+    # @return [Hash] Response Object
+    def user_live_feed(user_id)
+      get("/v1/users/#{user_id}/live")
     end
 
     # Searches for people with the given query
