@@ -53,16 +53,16 @@ module Livelyfeed
     #
     # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
-    def user_followers(user_id)
-      get("/v1/users/#{user_id}/followers")
+    def user_followers(user_id, params = {})
+      get("/v1/users/#{user_id}/followers", params)
     end
 
     # Returns users the given user id is following
     #
     # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
-    def user_followed_users(user_id)
-      get("/v1/users/#{user_id}/followed_users")
+    def user_followed_users(user_id, params = {})
+      get("/v1/users/#{user_id}/followed_users", params)
     end
 
     # Checks whether a user is following another
@@ -94,8 +94,8 @@ module Livelyfeed
     #
     # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
-    def user_groups(user_id)
-      get("/v1/users/#{user_id}/groups")
+    def user_groups(user_id, params = {})
+      get("/v1/users/#{user_id}/groups", params)
     end
 
     # Returns extended information for the group
@@ -151,8 +151,8 @@ module Livelyfeed
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
     # @return [Hash] Response Object
-    def group_members(group_id)
-      get("/v1/groups/#{group_id}/members")
+    def group_members(group_id, params = {})
+      get("/v1/groups/#{group_id}/members", params)
     end
 
     # Add a user to a group
@@ -177,8 +177,8 @@ module Livelyfeed
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
     # @return [Hash] Response Object
-    def group_chat_messages(group_id)
-      get("/v1/groups/#{group_id}/chat/messages")
+    def group_chat_messages(group_id, params)
+      get("/v1/groups/#{group_id}/chat/messages", params)
     end
 
     # Receive a specific message from a group
@@ -221,16 +221,16 @@ module Livelyfeed
     #
     # @param [Integer] group_id  A LivelyFeed Group ID
     # @return [Hash] Response Object
-    def group_moments(group_id)
-      get("/v1/groups/#{group_id}/feed/moments")
+    def group_moments(group_id, params = {})
+      get("/v1/groups/#{group_id}/feed/moments", params)
     end
 
     # Returns the users moments
     #
     # @param [Integer] user_id  A LivelyFeed User ID
     # @return [Hash] Response Object
-    def user_moments(group_id)
-      get("/v1/users/#{user_id}/moments")
+    def user_moments(group_id, params = {})
+      get("/v1/users/#{user_id}/moments", params)
     end
 
     # Creates a moment
